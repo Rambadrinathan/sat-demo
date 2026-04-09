@@ -151,7 +151,7 @@ section{padding:80px 24px}
   </div>
   <div class="cta-row">
     <a href="#demo" class="cta">Watch Live Demo ↓</a>
-    <a href="#email" class="cta cta-outline">Email Integration →</a>
+    <a href="#email" class="cta cta-outline">See Email Integration ↓</a>
   </div>
 </div>
 
@@ -221,19 +221,23 @@ section{padding:80px 24px}
     <div class="cap"><div class="icon">📄</div><div class="title">Document Search</div><div class="desc">Find any invoice across 1,000+ PDFs</div></div>
     <div class="cap"><div class="icon">🤝</div><div class="title">Agent Intelligence</div><div class="desc">Top agents ranked with contacts</div></div>
     <div class="cap"><div class="icon">🧠</div><div class="title">LLM Wiki</div><div class="desc">Compounding knowledge base</div></div>
+    <div class="cap"><div class="icon">📨</div><div class="title">Inbox Monitoring</div><div class="desc">Auto-detects enquiries from Gmail</div></div>
+    <div class="cap"><div class="icon">✍️</div><div class="title">Email Drafting</div><div class="desc">Drafts responses with estimates attached</div></div>
+    <div class="cap"><div class="icon">💳</div><div class="title">Payment Detection</div><div class="desc">Matches bank emails to bookings</div></div>
+    <div class="cap"><div class="icon">🔔</div><div class="title">Auto Follow-Ups</div><div class="desc">Overdue reminders, manager approves</div></div>
     <div class="cap"><div class="icon">🔬</div><div class="title">Data Transparency</div><div class="desc">Explains caveats, cross-verifies</div></div>
   </div>
 </section>
 
 <!-- EMAIL INTEGRATION -->
 <section class="email-section" id="email">
-  <h2 class="section-title">Coming Next — Email Integration</h2>
-  <p class="section-subtitle">When connected to the property's Gmail, the agent handles the full email lifecycle</p>
+  <h2 class="section-title">Email Integration — Built In</h2>
+  <p class="section-subtitle">Connected to the property's Gmail — the agent handles the full email lifecycle end-to-end</p>
   <div class="email-grid">
-    <div class="email-card"><div class="icon">📨</div><div class="title">Auto-Detect Enquiries</div><div class="desc">Agent monitors the inbox, identifies availability requests, rate queries, and booking confirmations from 430+ travel agents. Classifies by priority.</div></div>
+    <div class="email-card"><div class="icon">📨</div><div class="title">Auto-Detect Enquiries</div><div class="desc">Agent monitors the inbox, identifies availability requests, rate queries, and booking confirmations from 400+ travel agents. Classifies by priority and routes to the right workflow.</div></div>
     <div class="email-card"><div class="icon">✍️</div><div class="title">Draft Responses</div><div class="desc">Checks availability, looks up agent rates, calculates GST, drafts a professional response with estimate attached. Manager reviews and sends with one click.</div></div>
-    <div class="email-card"><div class="icon">📎</div><div class="title">Auto-Generate Invoices</div><div class="desc">When agent confirms "Please share the Tax Invoice" — the agent generates the PDF from booking data and drafts the email with attachment. No manual Excel work.</div></div>
-    <div class="email-card"><div class="icon">💳</div><div class="title">Payment Confirmation</div><div class="desc">Detects bank notification emails, matches to booking, updates the payment sheet, generates receipt voucher. Flags discrepancies.</div></div>
+    <div class="email-card"><div class="icon">📎</div><div class="title">Auto-Generate Invoices</div><div class="desc">Agent requests "Please share the Tax Invoice" — the agent generates the PDF from booking data and drafts the email with attachment. No manual Excel work.</div></div>
+    <div class="email-card"><div class="icon">💳</div><div class="title">Payment Confirmation</div><div class="desc">Detects bank notification emails, matches to booking, updates the payment sheet, generates receipt voucher. Flags discrepancies automatically.</div></div>
     <div class="email-card"><div class="icon">🔔</div><div class="title">Follow-Up Reminders</div><div class="desc">No response to estimate in 3 days? Agent drafts a gentle follow-up. Payment overdue? Agent drafts a reminder. Manager always approves before sending.</div></div>
     <div class="email-card"><div class="icon">📋</div><div class="title">Pre-Arrival Coordination</div><div class="desc">T-7 days: auto-emails guests with directions, packing tips, dietary confirmation. Coordinates with local handlers. Generates arrivals briefing doc.</div></div>
   </div>
@@ -288,6 +292,22 @@ const messages = [
   {type:'chip',text:'Refund Analysis'},
   {type:'user',text:'How many refunds this season? List them.',time:'10:52'},
   {type:'bot',text:'<strong>19 refunds</strong> processed:\n\n<table><tr><th>Booking</th><th>Guest</th><th>Amount</th></tr><tr><td>BK-78</td><td>David Fernandez</td><td>-₹2,94,500</td></tr><tr><td>BK-112</td><td>David Fernandez</td><td>-₹76,320</td></tr><tr><td>BK-45</td><td>Nandini Rao</td><td>-₹34,800</td></tr><tr><td>BK-51A</td><td>Karthik Sundaram</td><td>-₹21,500</td></tr><tr><td>BK-51B</td><td>Meera Iyer</td><td>-₹21,500</td></tr></table>\n\nLargest: BK-78 — ₹2.95L adjusted against subsequent booking.',time:'10:54'},
+
+  {type:'chip',text:'📧 Email — Enquiry Auto-Detection'},
+  {type:'user',text:'Check inbox — any new enquiries today?',time:'11:05'},
+  {type:'bot',text:'📨 <strong>3 new enquiries</strong> detected in inbox this morning:\n\n<strong>1. Rohit @ Wanderlust Travels</strong> (9:12 AM)\n"Need availability for Mr. & Mrs. Chen, 2 pax, Jan 20-23, Double AP"\n→ <strong>Availability: Rooms 3 & 5 free.</strong> Draft response ready.\n\n<strong>2. Emma @ Nomad India</strong> (9:45 AM)\n"Please share the Tax Invoice for BK-156 Anand Krishnan"\n→ <strong>Invoice found.</strong> Draft email with PDF attached ready.\n\n<strong>3. Direct guest — Priya Sharma</strong> (10:01 AM)\n"We are a family of 4, looking at Feb dates, any connected cottages?"\n→ <strong>Rooms 2+6 free Feb 8-12.</strong> Draft reply with published rates ready.\n\nReview and send? Or edit any draft first?',time:'11:06'},
+
+  {type:'chip',text:'📧 Email — Draft Response with Estimate'},
+  {type:'user',text:'Send the response to Rohit with the estimate attached.',time:'11:08'},
+  {type:'bot',text:'✅ <strong>Email sent</strong> to rohit@wanderlusttravels.com\n\n<strong>Subject:</strong> Re: Mr. & Mrs. Chen x 2 / Jan 20-23 / 1 Cottage\n\n<strong>Body:</strong>\nDear Rohit,\n\nThank you for your enquiry. We have availability for Jan 20-23 (3 nights).\n\nDouble AP: ₹19,500/night + 18% GST = ₹69,030 total.\n\nPlease find the estimate attached.\n\n<strong>Attachment:</strong> Estimate-187-Chen.pdf (auto-generated)\n\n<strong>CC:</strong> reservations@property.com\n\nPayment sheet updated. Guest profile created.',time:'11:09'},
+
+  {type:'chip',text:'📧 Email — Payment Detection'},
+  {type:'user',text:'Any payments come in today?',time:'11:15'},
+  {type:'bot',text:'💳 <strong>2 payments detected</strong> from bank notifications:\n\n<strong>1.</strong> ₹34,515 from Horizon Expeditions (NEFT)\n→ Matched to <strong>BK-162 Sarah Williams</strong> (50% advance)\n→ Payment sheet updated. Receipt voucher RV-204 generated.\n\n<strong>2.</strong> ₹1,15,050 from Wanderlust Travels (RTGS)\n→ Matched to <strong>BK-94 Vikram Nair</strong> (final settlement)\n→ Balance now ₹0. Booking fully paid.\n→ Receipt voucher RV-205 generated.\n\nBoth vouchers ready to email. Send?',time:'11:16'},
+
+  {type:'chip',text:'📧 Email — Overdue Follow-Up'},
+  {type:'user',text:'Who needs a payment reminder? Draft the emails.',time:'11:20'},
+  {type:'bot',text:'📬 <strong>3 overdue accounts</strong> — drafts ready:\n\n<strong>1. Heritage Trails Group</strong> — ₹2,85,400 (45 days overdue)\nDraft: "Dear Mr. Kapoor, This is a gentle reminder regarding the outstanding balance of ₹2,85,400 for the December group booking..."\n→ To: accounts@heritagetrails.com\n\n<strong>2. Vikram Nair</strong> — ₹68,250 (12 days overdue)\n✅ <em>Just paid — see above. No reminder needed.</em>\n\n<strong>3. Priya Menon</strong> — ₹52,340 (8 days overdue)\nDraft: "Dear Priya, Hope you enjoyed your stay! A gentle reminder about the balance of ₹52,340..."\n→ To: priya.menon@gmail.com\n\nReview and send? I can adjust the tone for any of these.',time:'11:21'},
 ];
 
 const chatBody=document.getElementById('chatBody'),typingIndicator=document.getElementById('typingIndicator'),inputDisplay=document.getElementById('inputDisplay'),startBtn=document.getElementById('startBtn');
