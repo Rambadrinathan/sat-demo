@@ -368,7 +368,7 @@ function typeInInput(text, cb) {
   const iv = setInterval(() => {
     inputDisplay.value = text.substring(0, ++i);
     if (i >= text.length) { clearInterval(iv); setTimeout(cb, 300); }
-  }, 25);
+  }, 38);
 }
 
 function showNextMessage() {
@@ -385,7 +385,7 @@ function showNextMessage() {
     const el = createMsgEl(m);
     chatBody.insertBefore(el, typingIndicator);
     chatBody.scrollTop = chatBody.scrollHeight;
-    setTimeout(showNextMessage, 400);
+    setTimeout(showNextMessage, 600);
     return;
   }
 
@@ -397,7 +397,7 @@ function showNextMessage() {
       chatBody.insertBefore(el, typingIndicator);
       requestAnimationFrame(() => { el.classList.add('show'); });
       chatBody.scrollTop = chatBody.scrollHeight;
-      setTimeout(showNextMessage, 600);
+      setTimeout(showNextMessage, 900);
     });
     return;
   }
@@ -405,14 +405,14 @@ function showNextMessage() {
   if (m.type === 'bot') {
     // Show typing indicator, then reveal response
     showTyping();
-    const delay = 1500 + Math.min(m.text.length * 2, 2500);
+    const delay = 2200 + Math.min(m.text.length * 3, 3500);
     setTimeout(() => {
       hideTyping();
       const el = createMsgEl(m);
       chatBody.insertBefore(el, typingIndicator);
       requestAnimationFrame(() => { el.classList.add('show'); });
       chatBody.scrollTop = chatBody.scrollHeight;
-      setTimeout(showNextMessage, 1200);
+      setTimeout(showNextMessage, 1800);
     }, delay);
     return;
   }
