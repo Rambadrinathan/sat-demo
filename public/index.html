@@ -143,10 +143,10 @@ section{padding:80px 24px}
   <p class="subtitle">End-to-end booking management — from enquiry to invoice — powered by your existing Google Sheets</p>
   <p class="desc">Your reservations manager handles 200+ bookings, 400+ travel agents, 1,000+ invoices per season — all manually on Google Sheets. This agent reads and writes those same sheets, answers questions on Telegram, generates documents, and tracks every payment. Zero migration. Zero training.</p>
   <div class="stats-bar">
-    <div class="stat"><div class="val">209</div><div class="label">Bookings / Season</div></div>
-    <div class="stat"><div class="val">430+</div><div class="label">Travel Agents</div></div>
-    <div class="stat"><div class="val">₹2.68 Cr</div><div class="label">Revenue Managed</div></div>
-    <div class="stat"><div class="val">1,042</div><div class="label">Documents</div></div>
+    <div class="stat"><div class="val">200+</div><div class="label">Bookings / Season</div></div>
+    <div class="stat"><div class="val">400+</div><div class="label">Travel Agents</div></div>
+    <div class="stat"><div class="val">₹2+ Cr</div><div class="label">Revenue Managed</div></div>
+    <div class="stat"><div class="val">1,000+</div><div class="label">Documents</div></div>
     <div class="stat"><div class="val">&lt;30s</div><div class="label">Response Time</div></div>
   </div>
   <div class="cta-row">
@@ -188,8 +188,8 @@ section{padding:80px 24px}
   <p class="section-subtitle">Real responses from the Telegram bot, querying live Google Sheets. Every number is from actual booking data.</p>
   <div class="phone-frame">
     <div class="tg-hdr">
-      <div class="tg-av">S</div>
-      <div class="info"><div class="name">Sarai Torai</div><div class="st">bot</div></div>
+      <div class="tg-av">R</div>
+      <div class="info"><div class="name">RARE Concierge</div><div class="st">bot</div></div>
       <div style="color:rgba(255,255,255,0.7);font-size:1.2rem">⋮</div>
     </div>
     <div class="chat-body" id="chatBody">
@@ -268,26 +268,26 @@ section{padding:80px 24px}
 <script>
 const messages = [
   {type:'chip',text:'Property Knowledge'},
-  {type:'user',text:'Hi, tell me about Sarai at Toria',time:'21:35'},
-  {type:'bot',text:'The Sarai at Toria is a place built around the rhythm of the forest. It sits on a beautiful stretch of open grassland right on the banks of the <strong>Ken River</strong>, just at the edge of the <strong>Panna Tiger Reserve</strong>.\n\nIt\'s the creation of Joanna Van Gruisen and Raghu Chundawat — both deeply committed conservationists.\n\n<strong>What makes us special:</strong>\n\n• <strong>8 cottages</strong> — intimate, earth-colored, connected pairs for families\n• <strong>Ken River</strong> boat safaris — gharials, crocodiles, otters\n• <strong>Wildlife + Heritage</strong> — tiger safari morning, Khajuraho temples afternoon\n• <strong>Communal dining</strong> — everyone eats together',time:'21:36'},
+  {type:'user',text:'Tell me about the property',time:'10:15'},
+  {type:'bot',text:'Welcome to our boutique wildlife lodge — a collection of intimate cottages set on open grassland at the edge of a national tiger reserve.\n\nBuilt by conservationists who wanted travelers to experience the forest, not just a hotel.\n\n<strong>What makes us special:</strong>\n\n• <strong>8 cottages</strong> — connected pairs for families, mezzanine levels\n• <strong>River safaris</strong> — crocodiles, gharials, otters, 200+ bird species\n• <strong>Wildlife + Heritage</strong> — tiger safari morning, UNESCO temples afternoon\n• <strong>Communal dining</strong> — all guests eat together',time:'10:16'},
   {type:'chip',text:'Agent Rate Lookup + GST Calculation'},
-  {type:'user',text:'Saurabh from Peirce & Leslie is asking for rates. 2 pax, Double AP, 3 nights Feb 6-9. Full breakdown.',time:'22:23'},
-  {type:'bot',text:'Hi Saurabh,\n\nBreakdown for <strong>Charles Denton x 2</strong>, <strong>3 nights (Feb 6–9)</strong>, <strong>Double AP</strong>:\n\n<strong>Rate per night:</strong> ₹22,300 + 18% GST = ₹26,314\n<strong>Total for 3 nights: ₹78,942</strong>\n\n<strong>Included:</strong>\n• Cottage accommodation\n• All meals (Breakfast, Lunch, Dinner)\n• Jeep safari permits\n• Ken River boat safari\n\nShall I generate the estimate PDF?',time:'22:23'},
+  {type:'user',text:'Rohit from Wanderlust Travels is asking for rates. 2 pax, Double AP, 3 nights Jan 15-18. Full breakdown.',time:'10:22'},
+  {type:'bot',text:'Hi Rohit,\n\nBreakdown for <strong>James Mitchell x 2</strong>, <strong>3 nights (Jan 15–18)</strong>, <strong>Double AP</strong>:\n\n<strong>Rate per night:</strong> ₹19,500 + 18% GST = ₹23,010\n<strong>Total for 3 nights: ₹69,030</strong>\n\n<strong>Included:</strong>\n• Cottage accommodation\n• All meals (Breakfast, Lunch, Dinner)\n• Jeep safari permits\n• River boat safari\n\nShall I generate the estimate PDF?',time:'10:23'},
   {type:'chip',text:'Outstanding Payments — Live from Google Sheets'},
-  {type:'user',text:'Show me all pending payments — who still owes us money?',time:'22:25'},
-  {type:'bot',text:'<strong>21 bookings</strong> with outstanding balances:\n\n<table><tr><th>Booking</th><th>Guest</th><th>Outstanding</th></tr><tr><td>SAT-9</td><td>MP Tours</td><td><strong>₹3,08,520</strong></td></tr><tr><td>SAT-181</td><td>Srinivas Mandavilli</td><td>₹78,942</td></tr><tr><td>SAT-75</td><td>Vijay Goyal</td><td>₹59,256</td></tr><tr><td>SAT-183</td><td>Joanna Massey</td><td>₹26,314</td></tr><tr><td>SAT-203</td><td>Kathryn Joy</td><td>₹26,314</td></tr><tr><td>SAT-129</td><td>Sameer Vashisht</td><td>₹24,960</td></tr></table>\n\nLargest: <strong>SAT-9 (MP Tours)</strong> at ₹3+ Lakhs. Shall I draft a follow-up?',time:'22:26'},
+  {type:'user',text:'Show me all pending payments — who still owes us money?',time:'10:30'},
+  {type:'bot',text:'<strong>18 bookings</strong> with outstanding balances:\n\n<table><tr><th>Booking</th><th>Guest</th><th>Outstanding</th></tr><tr><td>BK-12</td><td>Heritage Trails Group</td><td><strong>₹2,85,400</strong></td></tr><tr><td>BK-94</td><td>Vikram Nair</td><td>₹68,250</td></tr><tr><td>BK-67</td><td>Priya Menon</td><td>₹52,340</td></tr><tr><td>BK-141</td><td>Sarah Thompson</td><td>₹23,010</td></tr><tr><td>BK-156</td><td>Anand Krishnan</td><td>₹23,010</td></tr><tr><td>BK-103</td><td>Rahul Kapoor</td><td>₹18,720</td></tr></table>\n\nLargest: <strong>BK-12 (Heritage Trails Group)</strong> at ₹2.85 Lakhs. Shall I draft a follow-up?',time:'10:31'},
   {type:'chip',text:'73-Column Booking Lookup'},
-  {type:'user',text:'Pull up booking SAT-130 — full details',time:'22:28'},
-  {type:'bot',text:'<strong>Booking SAT-130:</strong>\n\n• <strong>Guest:</strong> Andrew Leslau\n• <strong>Agent:</strong> Peirce & Leslie\n• <strong>Dates:</strong> Feb 11–13, 2026 (2 nights)\n• <strong>Meal Plan:</strong> AP\n• <strong>Total:</strong> ₹80,628\n• <strong>Received:</strong> ₹78,294\n• <strong>Balance: ₹2,334</strong>\n\nGenerate the balance invoice?',time:'22:29'},
+  {type:'user',text:'Pull up booking BK-94 — full details',time:'10:35'},
+  {type:'bot',text:'<strong>Booking BK-94:</strong>\n\n• <strong>Guest:</strong> Vikram Nair\n• <strong>Agent:</strong> Wanderlust Travels\n• <strong>Dates:</strong> Feb 8–10, 2026 (2 nights)\n• <strong>Meal Plan:</strong> AP\n• <strong>Total:</strong> ₹72,480\n• <strong>Received:</strong> ₹4,230\n• <strong>Balance: ₹68,250</strong>\n\nGenerate the balance invoice?',time:'10:36'},
   {type:'chip',text:'Agent Account Reconciliation'},
-  {type:'user',text:'Has Bridging Journeys settled all their invoices this season?',time:'22:29'},
-  {type:'bot',text:'Yes, <strong>Bridging Journeys</strong> has settled all invoices.\n\nChecked their <strong>4 bookings</strong> — every one has <strong>₹0.00</strong> outstanding. Fully paid, good standing.',time:'22:30'},
+  {type:'user',text:'Has Horizon Expeditions settled all their invoices this season?',time:'10:38'},
+  {type:'bot',text:'Yes, <strong>Horizon Expeditions</strong> has settled all invoices.\n\nChecked their <strong>6 bookings</strong> — every one has <strong>₹0.00</strong> outstanding. Fully paid, good standing.',time:'10:39'},
   {type:'chip',text:'Full Season Analytics'},
-  {type:'user',text:'Season summary — revenue, top agents, occupancy by month',time:'22:44'},
-  {type:'bot',text:'<strong>Season 2025-26 Summary:</strong>\n\n💰 Revenue: <strong>₹2.54 Crore</strong> (195 bookings)\n\n🏆 Top 5:\n<table><tr><th>Agent</th><th>Revenue</th></tr><tr><td>Direct</td><td>₹91.5L</td></tr><tr><td>Artou Voyages</td><td>₹10.0L</td></tr><tr><td>TCI [Sita]</td><td>₹9.9L</td></tr><tr><td>Travel Inn</td><td>₹7.4L</td></tr><tr><td>Vana Safaris</td><td>₹7.2L</td></tr></table>\n\n📅 Peak: <strong>February</strong> (42.4% occupancy) — deciduous forest opens up, tiger sightings peak.',time:'22:46'},
+  {type:'user',text:'Season summary — revenue, top agents, occupancy by month',time:'10:45'},
+  {type:'bot',text:'<strong>Season 2025-26 Summary:</strong>\n\n💰 Revenue: <strong>₹2.21 Crore</strong> (186 bookings)\n\n🏆 Top 5:\n<table><tr><th>Agent</th><th>Revenue</th></tr><tr><td>Direct Guest</td><td>₹78.4L</td></tr><tr><td>Horizon Expeditions</td><td>₹11.2L</td></tr><tr><td>Wanderlust Travels</td><td>₹8.7L</td></tr><tr><td>Nomad India</td><td>₹7.1L</td></tr><tr><td>Safari Connexions</td><td>₹6.5L</td></tr></table>\n\n📅 Peak: <strong>February</strong> (45% occupancy) — open forest, peak wildlife sighting conditions.',time:'10:47'},
   {type:'chip',text:'Refund Analysis'},
-  {type:'user',text:'How many refunds this season? List them.',time:'23:40'},
-  {type:'bot',text:'<strong>24 refunds</strong> processed:\n\n<table><tr><th>Booking</th><th>Guest</th><th>Amount</th></tr><tr><td>SAT-102</td><td>Ashan Malalasekera</td><td>-₹3,38,778</td></tr><tr><td>SAT-165</td><td>Ashan Malalasekera</td><td>-₹83,144</td></tr><tr><td>SAT-89</td><td>Amita Dev</td><td>-₹38,250</td></tr><tr><td>SAT-66D</td><td>Akshay Madhavan</td><td>-₹24,500</td></tr><tr><td>SAT-66C</td><td>Janmejai Bagrodia</td><td>-₹24,500</td></tr></table>\n\nLargest: SAT-102 — ₹3.38L adjusted against subsequent booking.',time:'23:44'},
+  {type:'user',text:'How many refunds this season? List them.',time:'10:52'},
+  {type:'bot',text:'<strong>19 refunds</strong> processed:\n\n<table><tr><th>Booking</th><th>Guest</th><th>Amount</th></tr><tr><td>BK-78</td><td>David Fernandez</td><td>-₹2,94,500</td></tr><tr><td>BK-112</td><td>David Fernandez</td><td>-₹76,320</td></tr><tr><td>BK-45</td><td>Nandini Rao</td><td>-₹34,800</td></tr><tr><td>BK-51A</td><td>Karthik Sundaram</td><td>-₹21,500</td></tr><tr><td>BK-51B</td><td>Meera Iyer</td><td>-₹21,500</td></tr></table>\n\nLargest: BK-78 — ₹2.95L adjusted against subsequent booking.',time:'10:54'},
 ];
 
 const chatBody=document.getElementById('chatBody'),typingIndicator=document.getElementById('typingIndicator'),inputDisplay=document.getElementById('inputDisplay'),startBtn=document.getElementById('startBtn');
@@ -297,14 +297,14 @@ function hideTyping(){typingIndicator.classList.remove('active')}
 function createMsgEl(m){
   if(m.type==='chip'){const c=document.createElement('div');c.className='section-chip';c.textContent=m.text;return c}
   const d=document.createElement('div');d.className='msg '+(m.type==='user'?'user':'bot');
-  let h='';if(m.type==='bot')h+='<div class="sender">Sarai Torai</div>';
+  let h='';if(m.type==='bot')h+='<div class="sender">RARE Concierge</div>';
   h+='<div class="content">'+m.text.replace(/\n/g,'<br>')+'</div>';
   h+='<div class="time">'+m.time;if(m.type==='user')h+=' <span class="ticks">✓✓</span>';h+='</div>';
   d.innerHTML=h;return d;
 }
 function typeInInput(text,cb){inputDisplay.value='';let i=0;const iv=setInterval(()=>{inputDisplay.value=text.substring(0,++i);if(i>=text.length){clearInterval(iv);setTimeout(cb,400)}},38)}
 function showNextMessage(){
-  if(msgIndex>=messages.length){inputDisplay.value='';inputDisplay.placeholder='Demo complete — try @SaraiTorai_bot on Telegram';return}
+  if(msgIndex>=messages.length){inputDisplay.value='';inputDisplay.placeholder='Demo complete — contact us for your property';return}
   const m=messages[msgIndex];msgIndex++;
   if(m.type==='chip'){const el=createMsgEl(m);chatBody.insertBefore(el,typingIndicator);chatBody.scrollTop=chatBody.scrollHeight;setTimeout(showNextMessage,600);return}
   if(m.type==='user'){typeInInput(m.text,()=>{inputDisplay.value='';const el=createMsgEl(m);chatBody.insertBefore(el,typingIndicator);requestAnimationFrame(()=>{el.classList.add('show')});chatBody.scrollTop=chatBody.scrollHeight;setTimeout(showNextMessage,900)});return}
