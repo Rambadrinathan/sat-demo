@@ -11,13 +11,13 @@
   --rare-gold:#D4A13D;
   --rare-green:#74A942;
   --rare-dark:#1a1a12;
-  --tg-bg:#0e1621;
-  --tg-header:#17212b;
-  --tg-msg-in:#182533;
-  --tg-msg-out:#2b5278;
-  --tg-text:#f5f5f5;
-  --tg-time:rgba(255,255,255,0.35);
-  --tg-sender:#D4A13D;
+  --tg-bg:#c8d9ea;
+  --tg-header:#517da2;
+  --tg-msg-in:#ffffff;
+  --tg-msg-out:#effdde;
+  --tg-text:#1a1a1a;
+  --tg-time:rgba(0,0,0,0.35);
+  --tg-sender:#3a8fd4;
   --cream:#FAF7F2;
   --cream-dark:#F0EBE3;
 }
@@ -82,7 +82,7 @@ section{padding:80px 24px}
   background:var(--tg-header);color:#fff;
   padding:12px 16px;display:flex;align-items:center;gap:10px;
   position:sticky;top:0;z-index:2;
-  border-bottom:1px solid rgba(255,255,255,0.06);
+  border-bottom:1px solid rgba(0,0,0,0.1);
 }
 .tg-avatar{
   width:38px;height:38px;border-radius:50%;
@@ -92,8 +92,8 @@ section{padding:80px 24px}
 }
 .tg-header .info{flex:1}
 .tg-header .info .name{font-weight:600;font-size:.9rem}
-.tg-header .info .status{font-size:.72rem;color:#6d7f8f}
-.tg-header .dots{font-size:1.2rem;color:#6d7f8f;cursor:pointer}
+.tg-header .info .status{font-size:.72rem;color:rgba(255,255,255,0.7)}
+.tg-header .dots{font-size:1.2rem;color:rgba(255,255,255,0.7);cursor:pointer}
 
 .chat-body{
   padding:10px 8px 16px;
@@ -104,15 +104,15 @@ section{padding:80px 24px}
 }
 /* Date chip */
 .date-chip{
-  align-self:center;background:rgba(23,33,43,0.9);
-  color:#6d7f8f;font-size:.75rem;
+  align-self:center;background:rgba(81,125,162,0.5);
+  color:#fff;font-size:.75rem;
   padding:4px 14px;border-radius:12px;margin:8px 0;
 }
 /* Section chip */
 .section-chip{
   align-self:center;
-  background:rgba(212,161,61,0.12);
-  color:var(--rare-gold);font-size:.7rem;font-weight:600;
+  background:rgba(81,125,162,0.6);
+  color:#fff;font-size:.7rem;font-weight:600;
   padding:4px 14px;border-radius:12px;margin:12px 0 4px;
   letter-spacing:.5px;
 }
@@ -129,14 +129,16 @@ section{padding:80px 24px}
 .msg.user{
   background:var(--tg-msg-out);color:var(--tg-text);
   align-self:flex-end;border-top-right-radius:2px;
+  box-shadow:0 1px 1px rgba(0,0,0,0.08);
 }
 .msg.bot{
   background:var(--tg-msg-in);color:var(--tg-text);
   align-self:flex-start;border-top-left-radius:2px;
+  box-shadow:0 1px 1px rgba(0,0,0,0.08);
 }
 .msg .sender{font-size:.78rem;font-weight:600;color:var(--tg-sender);margin-bottom:2px}
 .msg .time{display:block;text-align:right;font-size:.65rem;color:var(--tg-time);margin-top:3px}
-.msg.user .time .ticks{color:#5db86e;margin-left:3px;font-size:.7rem}
+.msg.user .time .ticks{color:#4fae4e;margin-left:3px;font-size:.7rem}
 
 /* Typing indicator */
 .typing-indicator{
@@ -144,11 +146,12 @@ section{padding:80px 24px}
   background:var(--tg-msg-in);
   padding:10px 16px;border-radius:8px;border-top-left-radius:2px;
   display:none;gap:5px;align-items:center;
+  box-shadow:0 1px 1px rgba(0,0,0,0.08);
 }
 .typing-indicator.active{display:flex}
 .typing-indicator span{
   width:6px;height:6px;border-radius:50%;
-  background:#6d7f8f;animation:bounce .9s infinite;
+  background:#93b2c8;animation:bounce .9s infinite;
 }
 .typing-indicator span:nth-child(2){animation-delay:.15s}
 .typing-indicator span:nth-child(3){animation-delay:.3s}
@@ -156,21 +159,21 @@ section{padding:80px 24px}
 
 /* Input bar */
 .tg-input-bar{
-  background:var(--tg-header);
+  background:#e6ecf0;
   padding:8px 12px;display:flex;align-items:center;gap:8px;
-  border-top:1px solid rgba(255,255,255,0.06);
+  border-top:1px solid rgba(0,0,0,0.08);
 }
 .tg-input{
-  flex:1;background:#242f3d;border:none;
+  flex:1;background:#fff;border:1px solid rgba(0,0,0,0.12);
   border-radius:18px;padding:8px 16px;
-  color:#aaa;font-size:.85rem;cursor:default;
+  color:#333;font-size:.85rem;cursor:default;
 }
 
 /* Tables */
 .msg table{border-collapse:collapse;font-size:.78rem;width:100%;margin:6px 0}
-.msg th,.msg td{padding:3px 6px;border:1px solid rgba(255,255,255,0.1);text-align:left;white-space:nowrap}
-.msg th{background:rgba(255,255,255,0.05);font-weight:600;color:var(--rare-gold)}
-.msg td{color:#ddd}
+.msg th,.msg td{padding:3px 6px;border:1px solid rgba(0,0,0,0.1);text-align:left;white-space:nowrap}
+.msg th{background:rgba(0,0,0,0.04);font-weight:600;color:#2a6496}
+.msg td{color:#333}
 
 /* Bold/bullets in messages */
 .msg strong{font-weight:600}
@@ -412,7 +415,7 @@ function showNextMessage() {
       chatBody.insertBefore(el, typingIndicator);
       requestAnimationFrame(() => { el.classList.add('show'); });
       chatBody.scrollTop = chatBody.scrollHeight;
-      setTimeout(showNextMessage, 1800);
+      setTimeout(showNextMessage, 3000);
     }, delay);
     return;
   }
