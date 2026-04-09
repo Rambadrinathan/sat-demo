@@ -81,7 +81,7 @@ export default function Home() {
         }
         .tg-avatar {
           width: 42px; height: 42px; border-radius: 50%;
-          background: #c5956b;
+          background: #D4A13D;
           display: flex; align-items: center; justify-content: center;
           font-size: 18px; color: #fff; font-weight: 600;
         }
@@ -89,15 +89,20 @@ export default function Home() {
         .tg-header-name { color: #fff; font-size: 15px; font-weight: 600; }
         .tg-header-status { color: #6d7f8f; font-size: 13px; margin-top: 1px; }
 
-        /* RARE India brand bar */
+        /* RARE India brand bar — official colors: Gold #D4A13D, Green #74A942 */
         .rare-bar {
-          background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #CD853F 100%);
-          padding: 12px 16px;
+          background: linear-gradient(135deg, #2a2a1e 0%, #1a1f14 100%);
+          padding: 14px 16px;
           text-align: center;
           flex-shrink: 0;
+          border-bottom: 2px solid #D4A13D;
         }
-        .rare-bar-title { color: #fff; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; }
-        .rare-bar-sub { color: rgba(255,255,255,0.7); font-size: 10px; margin-top: 3px; letter-spacing: 1px; }
+        .rare-logo-text {
+          font-size: 18px; letter-spacing: 8px; text-transform: uppercase; font-weight: 300;
+          color: #74A942;
+        }
+        .rare-bar-title { color: #D4A13D; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin-top: 4px; }
+        .rare-bar-sub { color: rgba(255,255,255,0.45); font-size: 10px; margin-top: 3px; letter-spacing: 1px; }
 
         /* Section nav pills */
         .nav-pills {
@@ -116,7 +121,7 @@ export default function Home() {
           transition: all 0.15s;
           flex-shrink: 0;
         }
-        .pill.active { background: #2b5278; color: #7ab7e0; }
+        .pill.active { background: rgba(212, 161, 61, 0.2); color: #D4A13D; border: 1px solid rgba(212, 161, 61, 0.3); }
         .pill.inactive { background: transparent; color: #6d7f8f; }
         .pill.inactive:hover { background: #1e2c3a; }
 
@@ -141,8 +146,8 @@ export default function Home() {
           text-align: center; padding: 6px 16px; margin: 12px 0 4px;
         }
         .section-label span {
-          background: rgba(43, 82, 120, 0.4);
-          color: #7ab7e0; font-size: 11px; font-weight: 600;
+          background: rgba(212, 161, 61, 0.15);
+          color: #D4A13D; font-size: 11px; font-weight: 600;
           padding: 4px 14px; border-radius: 12px;
           letter-spacing: 0.5px;
         }
@@ -177,7 +182,7 @@ export default function Home() {
         }
 
         .msg-sender {
-          color: #6ab3f3; font-weight: 600; font-size: 13px;
+          color: #D4A13D; font-weight: 600; font-size: 13px;
           margin-bottom: 2px;
         }
         .msg-time {
@@ -189,7 +194,7 @@ export default function Home() {
 
         .msg-heading {
           font-weight: 700; font-size: 14px;
-          margin: 10px 0 4px; color: #7ab7e0;
+          margin: 10px 0 4px; color: #D4A13D;
         }
         .bullet {
           padding-left: 14px; text-indent: -10px;
@@ -210,7 +215,7 @@ export default function Home() {
         }
         .tg-table th {
           background: rgba(255,255,255,0.05);
-          font-weight: 600; color: #7ab7e0;
+          font-weight: 600; color: #D4A13D;
         }
         .tg-table td { color: #ddd; }
 
@@ -242,13 +247,14 @@ export default function Home() {
       <div className="app">
         {/* RARE India brand bar */}
         <div className="rare-bar">
-          <div className="rare-bar-title">RARE India &bull; Sarai at Toria</div>
-          <div className="rare-bar-sub">AI Operations Agent &mdash; Live Demo &bull; Panna Tiger Reserve, Khajuraho</div>
+          <div className="rare-logo-text">R A R E</div>
+          <div className="rare-bar-title">Sarai at Toria &bull; AI Operations Agent</div>
+          <div className="rare-bar-sub">Destinations &amp; Experiences &bull; Panna Tiger Reserve, Khajuraho</div>
         </div>
 
         {/* Telegram header */}
         <div className="tg-header">
-          <div className="tg-avatar" style={{ background: '#c5956b' }}>S</div>
+          <div className="tg-avatar" style={{ background: '#D4A13D' }}>S</div>
           <div className="tg-header-info">
             <div className="tg-header-name">Sarai Torai</div>
             <div className="tg-header-status">bot &bull; Qwen 3.6 Plus &bull; Google Sheets + LLM Wiki</div>
@@ -287,7 +293,7 @@ export default function Home() {
               {section.messages.map((msg, mi) => (
                 <div key={msg.id} className={`msg-row ${msg.from}`}>
                   {msg.from === 'bot' && (
-                    <div className="msg-avatar" style={{ background: '#c5956b' }}>S</div>
+                    <div className="msg-avatar" style={{ background: '#D4A13D' }}>S</div>
                   )}
                   <div className="msg-bubble">
                     {msg.from === 'bot' && <div className="msg-sender">Sarai Torai</div>}
