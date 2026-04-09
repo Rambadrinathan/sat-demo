@@ -3,221 +3,133 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sarai at Toria — AI Operations Agent Demo</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>RARE India — AI Reservations Agent for Boutique Hotels</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --rare-gold:#D4A13D;
-  --rare-green:#74A942;
-  --rare-dark:#1a1a12;
-  --tg-bg:#c8d9ea;
-  --tg-header:#517da2;
-  --tg-msg-in:#ffffff;
-  --tg-msg-out:#effdde;
-  --tg-text:#1a1a1a;
-  --tg-time:rgba(0,0,0,0.35);
-  --tg-sender:#3a8fd4;
-  --cream:#FAF7F2;
-  --cream-dark:#F0EBE3;
+  --gold:#D4A13D;--green:#74A942;
+  --forest:#3D2B1F;--forest-light:#5C4033;
+  --cream:#FAF7F2;--cream-dark:#F0EBE3;
+  --text:#1A1A1A;--text-light:#5C4033;
+  --tg-bg:#c8d9ea;--tg-header:#517da2;
+  --tg-in:#ffffff;--tg-out:#effdde;
 }
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;color:#1a1a1a;background:var(--cream);line-height:1.6;overflow-x:hidden}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--cream);line-height:1.6;overflow-x:hidden}
 h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:700}
+a{color:var(--gold);text-decoration:none}
 
-/* ===== HERO ===== */
-.hero{
-  min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;
-  background:linear-gradient(160deg,#FAF7F2 0%,#F5EFE6 40%,#EDE5D4 100%);
-  padding:60px 24px;position:relative;
-}
-.hero::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at 30% 20%,rgba(212,161,61,.06) 0%,transparent 60%),
-             radial-gradient(ellipse at 70% 80%,rgba(116,169,66,.04) 0%,transparent 50%);
-  pointer-events:none;
-}
-.hero-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(212,161,61,.1);border:1px solid rgba(212,161,61,.3);
-  padding:8px 20px;border-radius:100px;
-  font-size:.85rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
-  color:#3D2B1F;margin-bottom:32px;
-}
-.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--rare-green);flex-shrink:0;animation:pulse-dot 2s ease-in-out infinite}
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(160deg,#FAF7F2 0%,#F5EFE6 40%,#EDE5D4 100%);padding:60px 24px;position:relative}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(212,161,61,.06) 0%,transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(116,169,66,.04) 0%,transparent 50%);pointer-events:none}
+.rare-logo{color:var(--green);font-size:1rem;letter-spacing:8px;text-transform:uppercase;font-weight:300;margin-bottom:8px}
+.rare-sub{font-size:.75rem;letter-spacing:3px;text-transform:uppercase;color:#7A6B5D;margin-bottom:32px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(212,161,61,.1);border:1px solid rgba(212,161,61,.3);padding:8px 20px;border-radius:100px;font-size:.8rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--forest);margin-bottom:24px}
+.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse-dot 2s ease-in-out infinite}
 @keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.4}}
-.rare-logo{color:var(--rare-green);font-size:.85rem;letter-spacing:6px;text-transform:uppercase;font-weight:300;margin-bottom:8px}
-.hero h1{font-size:clamp(2.5rem,7vw,5rem);line-height:1.05;margin-bottom:16px;color:#1A1A1A}
-.hero h1 span{color:var(--rare-gold)}
-.hero .subtitle{
-  font-size:clamp(1rem,2.5vw,1.3rem);color:#5C4033;
-  max-width:600px;margin-bottom:48px;
-  font-family:'Cormorant Garamond',serif;font-style:italic;
-}
-.stats-bar{
-  display:flex;flex-wrap:wrap;justify-content:center;gap:12px 32px;
-  padding:20px 32px;background:rgba(255,255,255,.7);
-  border:1px solid rgba(212,161,61,.15);border-radius:16px;
-  backdrop-filter:blur(10px);
-}
-.stat{text-align:center}
-.stat .val{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#3D2B1F}
-.stat .label{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#7A6B5D}
+.hero h1{font-size:clamp(2.2rem,6vw,4.5rem);line-height:1.1;margin-bottom:16px;color:var(--text);max-width:800px}
+.hero h1 span{color:var(--gold)}
+.hero .subtitle{font-size:clamp(1rem,2vw,1.25rem);color:var(--text-light);max-width:640px;margin-bottom:40px;font-family:'Cormorant Garamond',serif;font-style:italic}
+.hero .desc{font-size:.9rem;color:#666;max-width:560px;margin-bottom:40px;line-height:1.8}
 
-/* ===== SECTIONS ===== */
+.stats-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 32px;padding:20px 32px;background:rgba(255,255,255,.7);border:1px solid rgba(212,161,61,.15);border-radius:16px;backdrop-filter:blur(10px);margin-bottom:32px}
+.stat{text-align:center}.stat .val{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--forest)}.stat .label{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#7A6B5D}
+
+.cta{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fff;padding:14px 32px;border-radius:100px;font-weight:600;font-size:1rem;text-decoration:none;border:none;cursor:pointer;transition:transform .2s,background .2s}
+.cta:hover{transform:scale(1.03);background:#b8862b}
+.cta-outline{background:transparent;border:2px solid var(--gold);color:var(--gold)}
+.cta-outline:hover{background:var(--gold);color:#fff}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+
+/* SECTIONS */
 section{padding:80px 24px}
-.section-title{text-align:center;font-size:clamp(1.8rem,4vw,2.8rem);color:#3D2B1F;margin-bottom:12px}
-.section-subtitle{text-align:center;font-size:1rem;color:#5C4033;max-width:600px;margin:0 auto 48px}
+.section-title{text-align:center;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--forest);margin-bottom:12px}
+.section-subtitle{text-align:center;font-size:1rem;color:var(--text-light);max-width:640px;margin:0 auto 48px}
 
-/* ===== TELEGRAM PHONE FRAME ===== */
+/* PROBLEM */
+.problem{background:#fff}
+.problem-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.pain{background:var(--cream);border-radius:12px;padding:24px;border-left:4px solid #d44;position:relative}
+.pain .icon{font-size:1.5rem;margin-bottom:8px}
+.pain .title{font-weight:700;font-size:.95rem;color:var(--forest);margin-bottom:6px}
+.pain .desc{font-size:.85rem;color:#666;line-height:1.6}
+.pain .time{font-size:.75rem;color:#d44;font-weight:600;margin-top:8px}
+
+/* SOLUTION */
+.solution{background:var(--cream-dark)}
+.solution-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.cap{background:#fff;border:1px solid rgba(212,161,61,.12);border-radius:12px;padding:20px;text-align:center;transition:transform .2s,box-shadow .2s}
+.cap:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.cap .icon{font-size:2rem;margin-bottom:8px}
+.cap .title{font-weight:600;font-size:.9rem;color:var(--forest);margin-bottom:4px}
+.cap .desc{font-size:.78rem;color:#7A6B5D}
+.cap.coming{opacity:.7;border-style:dashed}
+.cap.coming .badge{display:inline-block;background:rgba(212,161,61,.15);color:var(--gold);font-size:.6rem;font-weight:700;padding:2px 8px;border-radius:8px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+
+/* PHONE FRAME */
 .chat-section{background:var(--cream-dark)}
-.phone-frame{
-  max-width:440px;margin:0 auto;
-  border-radius:24px;overflow:hidden;
-  box-shadow:0 25px 80px rgba(0,0,0,.3),0 0 0 1px rgba(0,0,0,.1);
-  background:var(--tg-bg);position:relative;
-}
-.tg-header{
-  background:var(--tg-header);color:#fff;
-  padding:12px 16px;display:flex;align-items:center;gap:10px;
-  position:sticky;top:0;z-index:2;
-  border-bottom:1px solid rgba(0,0,0,0.1);
-}
-.tg-avatar{
-  width:38px;height:38px;border-radius:50%;
-  background:var(--rare-gold);
-  display:flex;align-items:center;justify-content:center;
-  font-weight:700;font-size:.9rem;color:#fff;flex-shrink:0;
-}
-.tg-header .info{flex:1}
-.tg-header .info .name{font-weight:600;font-size:.9rem}
-.tg-header .info .status{font-size:.72rem;color:rgba(255,255,255,0.7)}
-.tg-header .dots{font-size:1.2rem;color:rgba(255,255,255,0.7);cursor:pointer}
-
-.chat-body{
-  padding:10px 8px 16px;
-  height:65vh;max-height:600px;overflow-y:auto;
-  display:flex;flex-direction:column;gap:3px;
-  scroll-behavior:smooth;
-  background:var(--tg-bg);
-}
-/* Date chip */
-.date-chip{
-  align-self:center;background:rgba(81,125,162,0.5);
-  color:#fff;font-size:.75rem;
-  padding:4px 14px;border-radius:12px;margin:8px 0;
-}
-/* Section chip */
-.section-chip{
-  align-self:center;
-  background:rgba(81,125,162,0.6);
-  color:#fff;font-size:.7rem;font-weight:600;
-  padding:4px 14px;border-radius:12px;margin:12px 0 4px;
-  letter-spacing:.5px;
-}
-
-/* Messages */
-.msg{
-  max-width:85%;padding:6px 10px;border-radius:8px;
-  font-size:.88rem;line-height:1.5;position:relative;
-  word-wrap:break-word;
-  opacity:0;transform:translateY(10px);
-  transition:opacity .35s ease,transform .35s ease;
-}
+.phone-frame{max-width:440px;margin:0 auto;border-radius:24px;overflow:hidden;box-shadow:0 25px 80px rgba(0,0,0,.2),0 0 0 1px rgba(0,0,0,.08);background:var(--tg-bg);position:relative}
+.tg-hdr{background:var(--tg-header);color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(0,0,0,0.1)}
+.tg-av{width:38px;height:38px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;color:#fff;flex-shrink:0}
+.tg-hdr .info{flex:1}.tg-hdr .name{font-weight:600;font-size:.9rem}.tg-hdr .st{font-size:.72rem;color:rgba(255,255,255,0.7)}
+.chat-body{padding:10px 8px 16px;height:65vh;max-height:600px;overflow-y:auto;display:flex;flex-direction:column;gap:3px;scroll-behavior:smooth;background:var(--tg-bg)}
+.date-chip{align-self:center;background:rgba(81,125,162,0.5);color:#fff;font-size:.75rem;padding:4px 14px;border-radius:12px;margin:8px 0}
+.section-chip{align-self:center;background:rgba(81,125,162,0.6);color:#fff;font-size:.7rem;font-weight:600;padding:4px 14px;border-radius:12px;margin:12px 0 4px;letter-spacing:.5px}
+.msg{max-width:85%;padding:6px 10px;border-radius:8px;font-size:.88rem;line-height:1.5;position:relative;word-wrap:break-word;opacity:0;transform:translateY(10px);transition:opacity .35s ease,transform .35s ease}
 .msg.show{opacity:1;transform:translateY(0)}
-.msg.user{
-  background:var(--tg-msg-out);color:var(--tg-text);
-  align-self:flex-end;border-top-right-radius:2px;
-  box-shadow:0 1px 1px rgba(0,0,0,0.08);
-}
-.msg.bot{
-  background:var(--tg-msg-in);color:var(--tg-text);
-  align-self:flex-start;border-top-left-radius:2px;
-  box-shadow:0 1px 1px rgba(0,0,0,0.08);
-}
-.msg .sender{font-size:.78rem;font-weight:600;color:var(--tg-sender);margin-bottom:2px}
-.msg .time{display:block;text-align:right;font-size:.65rem;color:var(--tg-time);margin-top:3px}
+.msg.user{background:var(--tg-out);color:var(--text);align-self:flex-end;border-top-right-radius:2px;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.msg.bot{background:var(--tg-in);color:var(--text);align-self:flex-start;border-top-left-radius:2px;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.msg .sender{font-size:.78rem;font-weight:600;color:#3a8fd4;margin-bottom:2px}
+.msg .time{display:block;text-align:right;font-size:.65rem;color:rgba(0,0,0,0.35);margin-top:3px}
 .msg.user .time .ticks{color:#4fae4e;margin-left:3px;font-size:.7rem}
-
-/* Typing indicator */
-.typing-indicator{
-  align-self:flex-start;
-  background:var(--tg-msg-in);
-  padding:10px 16px;border-radius:8px;border-top-left-radius:2px;
-  display:none;gap:5px;align-items:center;
-  box-shadow:0 1px 1px rgba(0,0,0,0.08);
-}
+.typing-indicator{align-self:flex-start;background:var(--tg-in);padding:10px 16px;border-radius:8px;border-top-left-radius:2px;display:none;gap:5px;align-items:center;box-shadow:0 1px 1px rgba(0,0,0,.08)}
 .typing-indicator.active{display:flex}
-.typing-indicator span{
-  width:6px;height:6px;border-radius:50%;
-  background:#93b2c8;animation:bounce .9s infinite;
-}
+.typing-indicator span{width:6px;height:6px;border-radius:50%;background:#93b2c8;animation:bounce .9s infinite}
 .typing-indicator span:nth-child(2){animation-delay:.15s}
 .typing-indicator span:nth-child(3){animation-delay:.3s}
 @keyframes bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
-
-/* Input bar */
-.tg-input-bar{
-  background:#e6ecf0;
-  padding:8px 12px;display:flex;align-items:center;gap:8px;
-  border-top:1px solid rgba(0,0,0,0.08);
-}
-.tg-input{
-  flex:1;background:#fff;border:1px solid rgba(0,0,0,0.12);
-  border-radius:18px;padding:8px 16px;
-  color:#333;font-size:.85rem;cursor:default;
-}
-
-/* Tables */
+.tg-bar{background:#e6ecf0;padding:8px 12px;display:flex;align-items:center;gap:8px;border-top:1px solid rgba(0,0,0,0.08)}
+.tg-inp{flex:1;background:#fff;border:1px solid rgba(0,0,0,0.12);border-radius:18px;padding:8px 16px;color:#333;font-size:.85rem;cursor:default}
 .msg table{border-collapse:collapse;font-size:.78rem;width:100%;margin:6px 0}
 .msg th,.msg td{padding:3px 6px;border:1px solid rgba(0,0,0,0.1);text-align:left;white-space:nowrap}
 .msg th{background:rgba(0,0,0,0.04);font-weight:600;color:#2a6496}
 .msg td{color:#333}
-
-/* Bold/bullets in messages */
 .msg strong{font-weight:600}
 .msg .bullet{padding-left:12px;margin:1px 0}
 
-/* ===== SCENARIOS SECTION ===== */
-.scenarios{background:var(--cream)}
-.scenario-grid{
-  max-width:800px;margin:0 auto;
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;
-}
-.scenario-card{
-  background:#fff;border:1px solid rgba(212,161,61,.15);
-  border-radius:12px;padding:20px;text-align:center;
-  transition:transform .2s,box-shadow .2s;
-}
-.scenario-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
-.scenario-card .icon{font-size:2rem;margin-bottom:8px}
-.scenario-card .title{font-weight:600;font-size:.9rem;color:#3D2B1F;margin-bottom:4px}
-.scenario-card .desc{font-size:.78rem;color:#7A6B5D}
+/* EMAIL */
+.email-section{background:#fff}
+.email-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.email-card{background:var(--cream);border-radius:12px;padding:24px;border-left:4px solid var(--green)}
+.email-card .icon{font-size:1.5rem;margin-bottom:8px}
+.email-card .title{font-weight:700;font-size:.95rem;color:var(--forest);margin-bottom:6px}
+.email-card .desc{font-size:.85rem;color:#666;line-height:1.6}
 
-/* ===== FOOTER ===== */
-.footer{
-  background:#3D2B1F;color:rgba(255,255,255,.5);
-  text-align:center;padding:32px 24px;font-size:.8rem;
-}
-.footer .rare{color:var(--rare-green);font-weight:600;letter-spacing:4px;text-transform:uppercase}
+/* HOW IT WORKS */
+.how{background:var(--cream)}
+.flow{max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:0}
+.flow-step{display:flex;gap:16px;padding:20px 0;position:relative}
+.flow-step:not(:last-child)::after{content:'';position:absolute;left:19px;top:56px;bottom:0;width:2px;background:rgba(212,161,61,.3)}
+.flow-num{width:40px;height:40px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0;z-index:1}
+.flow-content .flow-title{font-weight:700;color:var(--forest);margin-bottom:4px}
+.flow-content .flow-desc{font-size:.88rem;color:#666;line-height:1.6}
 
-/* ===== CTA BUTTON ===== */
-.cta{
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--rare-gold);color:#fff;
-  padding:14px 32px;border-radius:100px;
-  font-weight:600;font-size:1rem;
-  text-decoration:none;border:none;cursor:pointer;
-  transition:transform .2s,background .2s;
-  margin-top:24px;
-}
-.cta:hover{transform:scale(1.03);background:#b8862b}
+/* PROPERTIES */
+.properties{background:var(--cream-dark)}
+.property-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.property{background:#fff;border-radius:12px;padding:20px;text-align:center;border:1px solid rgba(0,0,0,.06)}
+.property .emoji{font-size:2rem;margin-bottom:8px}
+.property .name{font-weight:600;color:var(--forest);margin-bottom:4px}
+.property .type{font-size:.78rem;color:#7A6B5D}
+.property.active{border:2px solid var(--gold);background:rgba(212,161,61,.04)}
+.property.active .badge{display:inline-block;background:var(--green);color:#fff;font-size:.6rem;font-weight:700;padding:2px 8px;border-radius:8px;margin-bottom:6px}
 
-@media(max-width:480px){
-  .phone-frame{border-radius:0;margin:0 -24px}
-  .chat-body{height:70vh;max-height:none}
-}
+/* FOOTER */
+.footer{background:var(--forest);color:rgba(255,255,255,.5);text-align:center;padding:40px 24px;font-size:.8rem}
+.footer .rare{color:var(--green);font-weight:600;letter-spacing:4px;text-transform:uppercase}
+
+@media(max-width:480px){.phone-frame{border-radius:0;margin:0 -24px}.chat-body{height:70vh;max-height:none}.hero h1{font-size:2rem}}
 </style>
 </head>
 <body>
@@ -225,39 +137,67 @@ section{padding:80px 24px}
 <!-- HERO -->
 <div class="hero">
   <div class="rare-logo">R A R E</div>
-  <div class="hero-badge"><span class="dot"></span> Live Agent Demo</div>
-  <h1>Sarai at <span>Toria</span></h1>
-  <p class="subtitle">AI Operations Agent for End-to-End Hotel Management<br>Panna Tiger Reserve, Khajuraho</p>
+  <div class="rare-sub">Destinations & Experiences</div>
+  <div class="hero-badge"><span class="dot"></span> Live Product Demo</div>
+  <h1>AI Reservations Agent for <span>Boutique Hotels</span></h1>
+  <p class="subtitle">End-to-end booking management — from enquiry to invoice — powered by your existing Google Sheets</p>
+  <p class="desc">Your reservations manager handles 200+ bookings, 400+ travel agents, 1,000+ invoices per season — all manually on Google Sheets. This agent reads and writes those same sheets, answers questions on Telegram, generates documents, and tracks every payment. Zero migration. Zero training.</p>
   <div class="stats-bar">
-    <div class="stat"><div class="val">209</div><div class="label">Bookings</div></div>
-    <div class="stat"><div class="val">430+</div><div class="label">Agents</div></div>
-    <div class="stat"><div class="val">₹2.68 Cr</div><div class="label">Revenue</div></div>
+    <div class="stat"><div class="val">209</div><div class="label">Bookings / Season</div></div>
+    <div class="stat"><div class="val">430+</div><div class="label">Travel Agents</div></div>
+    <div class="stat"><div class="val">₹2.68 Cr</div><div class="label">Revenue Managed</div></div>
     <div class="stat"><div class="val">1,042</div><div class="label">Documents</div></div>
-    <div class="stat"><div class="val">424</div><div class="label">Payments</div></div>
+    <div class="stat"><div class="val">&lt;30s</div><div class="label">Response Time</div></div>
   </div>
-  <a href="#demo" class="cta">Watch the Demo ↓</a>
+  <div class="cta-row">
+    <a href="#demo" class="cta">Watch Live Demo ↓</a>
+    <a href="#email" class="cta cta-outline">Email Integration →</a>
+  </div>
 </div>
 
-<!-- DEMO CHAT -->
-<section class="chat-section" id="demo">
-  <h2 class="section-title">See It In Action</h2>
-  <p class="section-subtitle">A real conversation on Telegram — every response pulled live from Google Sheets and the LLM Wiki</p>
+<!-- PROBLEM -->
+<section class="problem">
+  <h2 class="section-title">The Problem</h2>
+  <p class="section-subtitle">A reservations manager's day — every task is manual</p>
+  <div class="problem-grid">
+    <div class="pain"><div class="icon">📧</div><div class="title">Enquiry Response</div><div class="desc">Agent emails asking for availability + rates. Check the grid, look up contracted rates, calculate GST, draft estimate.</div><div class="time">15 min per enquiry × 10/day</div></div>
+    <div class="pain"><div class="icon">📊</div><div class="title">Booking Entry</div><div class="desc">73 columns across 5 sheets — availability grid, activity chart, transport, payments. One mistake cascades everywhere.</div><div class="time">30 min per booking</div></div>
+    <div class="pain"><div class="icon">📄</div><div class="title">Invoice Generation</div><div class="desc">Estimate → Advance Invoice → Tax Invoice → Credit Note → Receipt Voucher. 5 documents per booking.</div><div class="time">1,042 PDFs / season</div></div>
+    <div class="pain"><div class="icon">💰</div><div class="title">Payment Tracking</div><div class="desc">Partial advances, TDS deductions, agent vs direct billing. Who still owes? Scroll through 1,108 rows.</div><div class="time">Hours of reconciliation</div></div>
+    <div class="pain"><div class="icon">📋</div><div class="title">Arrivals Briefing</div><div class="desc">Monthly Word doc with 12-field detail cards per guest for on-ground team. Copy-paste from 5 different sheets.</div><div class="time">2-3 hours per month</div></div>
+    <div class="pain"><div class="icon">🔍</div><div class="title">Finding Documents</div><div class="desc">362 invoices, 194 estimates on Google Drive. "Where's the tax invoice for Cristina Mainetti?" — scroll, scroll, scroll.</div><div class="time">5-10 min per search</div></div>
+  </div>
+</section>
 
+<!-- HOW IT WORKS -->
+<section class="how">
+  <h2 class="section-title">How It Works</h2>
+  <p class="section-subtitle">Your Google Sheets stay as they are. The agent reads and writes them.</p>
+  <div class="flow">
+    <div class="flow-step"><div class="flow-num">1</div><div class="flow-content"><div class="flow-title">Upload your season data to Google Drive</div><div class="flow-desc">Booking chart, availability grid, activity chart, transport bookings, rate cards — exactly as you use them today.</div></div></div>
+    <div class="flow-step"><div class="flow-num">2</div><div class="flow-content"><div class="flow-title">Agent learns your property</div><div class="flow-desc">Rooms, rates (published + 430 agent-specific contracted rates), activities, transport fleet, invoice templates, GST rules. Builds a compounding knowledge base.</div></div></div>
+    <div class="flow-step"><div class="flow-num">3</div><div class="flow-content"><div class="flow-title">Connect Telegram (or WhatsApp)</div><div class="flow-desc">The reservations manager messages the bot. Natural language — "Check availability Feb 10-14" or "What does Bridging Journeys owe us?"</div></div></div>
+    <div class="flow-step"><div class="flow-num">4</div><div class="flow-content"><div class="flow-title">Agent queries live sheets, responds in seconds</div><div class="flow-desc">Reads the actual Google Sheet, calculates GST, cross-references payments, searches Drive for documents. Every number is real.</div></div></div>
+    <div class="flow-step"><div class="flow-num">5</div><div class="flow-content"><div class="flow-title">Knowledge compounds every season</div><div class="flow-desc">An LLM Wiki synthesizes patterns — occupancy trends, agent performance, refund rates, pricing insights. Gets smarter each year.</div></div></div>
+  </div>
+</section>
+
+<!-- LIVE DEMO -->
+<section class="chat-section" id="demo">
+  <h2 class="section-title">Live Demo — Sarai at Toria</h2>
+  <p class="section-subtitle">Real responses from the Telegram bot, querying live Google Sheets. Every number is from actual booking data.</p>
   <div class="phone-frame">
-    <div class="tg-header">
-      <div class="tg-avatar">S</div>
-      <div class="info">
-        <div class="name">Sarai Torai</div>
-        <div class="status">bot</div>
-      </div>
-      <div class="dots">⋮</div>
+    <div class="tg-hdr">
+      <div class="tg-av">S</div>
+      <div class="info"><div class="name">Sarai Torai</div><div class="st">bot</div></div>
+      <div style="color:rgba(255,255,255,0.7);font-size:1.2rem">⋮</div>
     </div>
     <div class="chat-body" id="chatBody">
       <div class="date-chip">8 April 2026</div>
       <div class="typing-indicator" id="typingIndicator"><span></span><span></span><span></span></div>
     </div>
-    <div class="tg-input-bar">
-      <input class="tg-input" id="inputDisplay" placeholder="Message" readonly>
+    <div class="tg-bar">
+      <input class="tg-inp" id="inputDisplay" placeholder="Message" readonly>
     </div>
   </div>
   <div style="text-align:center;margin-top:24px">
@@ -266,22 +206,52 @@ section{padding:80px 24px}
 </section>
 
 <!-- CAPABILITIES -->
-<section class="scenarios">
-  <h2 class="section-title">What It Can Do</h2>
-  <p class="section-subtitle">Every query hits live Google Sheets — 209 bookings, 430 agents, 1,108 payment entries</p>
-  <div class="scenario-grid">
-    <div class="scenario-card"><div class="icon">📅</div><div class="title">Availability Check</div><div class="desc">Reads 8-room × 180-day grid instantly</div></div>
-    <div class="scenario-card"><div class="icon">💰</div><div class="title">Rate Lookup</div><div class="desc">430 agents with contracted AP/MAP rates + GST</div></div>
-    <div class="scenario-card"><div class="icon">⚠️</div><div class="title">Payment Tracking</div><div class="desc">Cross-references 1,108 entries, flags balances</div></div>
-    <div class="scenario-card"><div class="icon">🔍</div><div class="title">Booking Lookup</div><div class="desc">All 73 columns for any booking ref</div></div>
-    <div class="scenario-card"><div class="icon">✅</div><div class="title">Agent Reconciliation</div><div class="desc">Has this agent settled all invoices?</div></div>
-    <div class="scenario-card"><div class="icon">📊</div><div class="title">Season Analytics</div><div class="desc">Revenue, top agents, occupancy by month</div></div>
-    <div class="scenario-card"><div class="icon">🏷️</div><div class="title">Rate Cards</div><div class="desc">Agent-specific rates for next season prep</div></div>
-    <div class="scenario-card"><div class="icon">💸</div><div class="title">Refund Analysis</div><div class="desc">Every refund with amounts and reasons</div></div>
-    <div class="scenario-card"><div class="icon">📄</div><div class="title">Invoice Retrieval</div><div class="desc">Search 362 invoices on Google Drive</div></div>
-    <div class="scenario-card"><div class="icon">🤝</div><div class="title">Agent Intelligence</div><div class="desc">Top agents with contact details for outreach</div></div>
-    <div class="scenario-card"><div class="icon">🧠</div><div class="title">LLM Wiki</div><div class="desc">Compounding knowledge that gets smarter each season</div></div>
-    <div class="scenario-card"><div class="icon">🔬</div><div class="title">Data Transparency</div><div class="desc">Explains caveats, offers to cross-verify</div></div>
+<section class="solution">
+  <h2 class="section-title">What It Can Do Today</h2>
+  <p class="section-subtitle">Every capability works on your existing Google Sheets — no migration required</p>
+  <div class="solution-grid">
+    <div class="cap"><div class="icon">📅</div><div class="title">Availability Check</div><div class="desc">8-room × 180-day grid in seconds</div></div>
+    <div class="cap"><div class="icon">💰</div><div class="title">Rate Lookup</div><div class="desc">Agent-specific AP/MAP rates + GST</div></div>
+    <div class="cap"><div class="icon">⚠️</div><div class="title">Payment Tracking</div><div class="desc">1,108 entries, flags outstanding balances</div></div>
+    <div class="cap"><div class="icon">🔍</div><div class="title">Booking Lookup</div><div class="desc">All 73 columns for any booking ref</div></div>
+    <div class="cap"><div class="icon">✅</div><div class="title">Agent Reconciliation</div><div class="desc">Has this agent cleared all invoices?</div></div>
+    <div class="cap"><div class="icon">📊</div><div class="title">Season Analytics</div><div class="desc">Revenue, occupancy, top agents</div></div>
+    <div class="cap"><div class="icon">🏷️</div><div class="title">Estimate Builder</div><div class="desc">Natural language → rate calculation</div></div>
+    <div class="cap"><div class="icon">💸</div><div class="title">Refund Analysis</div><div class="desc">Every refund with amounts and reasons</div></div>
+    <div class="cap"><div class="icon">📄</div><div class="title">Document Search</div><div class="desc">Find any invoice across 1,000+ PDFs</div></div>
+    <div class="cap"><div class="icon">🤝</div><div class="title">Agent Intelligence</div><div class="desc">Top agents ranked with contacts</div></div>
+    <div class="cap"><div class="icon">🧠</div><div class="title">LLM Wiki</div><div class="desc">Compounding knowledge base</div></div>
+    <div class="cap"><div class="icon">🔬</div><div class="title">Data Transparency</div><div class="desc">Explains caveats, cross-verifies</div></div>
+  </div>
+</section>
+
+<!-- EMAIL INTEGRATION -->
+<section class="email-section" id="email">
+  <h2 class="section-title">Coming Next — Email Integration</h2>
+  <p class="section-subtitle">When connected to the property's Gmail, the agent handles the full email lifecycle</p>
+  <div class="email-grid">
+    <div class="email-card"><div class="icon">📨</div><div class="title">Auto-Detect Enquiries</div><div class="desc">Agent monitors the inbox, identifies availability requests, rate queries, and booking confirmations from 430+ travel agents. Classifies by priority.</div></div>
+    <div class="email-card"><div class="icon">✍️</div><div class="title">Draft Responses</div><div class="desc">Checks availability, looks up agent rates, calculates GST, drafts a professional response with estimate attached. Manager reviews and sends with one click.</div></div>
+    <div class="email-card"><div class="icon">📎</div><div class="title">Auto-Generate Invoices</div><div class="desc">When agent confirms "Please share the Tax Invoice" — the agent generates the PDF from booking data and drafts the email with attachment. No manual Excel work.</div></div>
+    <div class="email-card"><div class="icon">💳</div><div class="title">Payment Confirmation</div><div class="desc">Detects bank notification emails, matches to booking, updates the payment sheet, generates receipt voucher. Flags discrepancies.</div></div>
+    <div class="email-card"><div class="icon">🔔</div><div class="title">Follow-Up Reminders</div><div class="desc">No response to estimate in 3 days? Agent drafts a gentle follow-up. Payment overdue? Agent drafts a reminder. Manager always approves before sending.</div></div>
+    <div class="email-card"><div class="icon">📋</div><div class="title">Pre-Arrival Coordination</div><div class="desc">T-7 days: auto-emails guests with directions, packing tips, dietary confirmation. Coordinates with local handlers. Generates arrivals briefing doc.</div></div>
+  </div>
+</section>
+
+<!-- ANY PROPERTY -->
+<section class="properties">
+  <h2 class="section-title">For Any RARE India Property</h2>
+  <p class="section-subtitle">Same architecture, customized for each property's rooms, rates, activities, and workflow</p>
+  <div class="property-grid">
+    <div class="property active"><div class="badge">LIVE</div><div class="emoji">🐯</div><div class="name">Sarai at Toria</div><div class="type">Wildlife Lodge, Khajuraho</div></div>
+    <div class="property active"><div class="badge">LIVE</div><div class="emoji">🏔️</div><div class="name">Sitla Estate</div><div class="type">Hill Retreat, Mukteshwar</div></div>
+    <div class="property"><div class="emoji">🏰</div><div class="name">Fort & Palace</div><div class="type">Heritage, Rajasthan</div></div>
+    <div class="property"><div class="emoji">🚢</div><div class="name">River Cruise</div><div class="type">Brahmaputra / Kerala</div></div>
+    <div class="property"><div class="emoji">🌊</div><div class="name">Retreat by Sea</div><div class="type">Coastal, Goa / Kerala</div></div>
+    <div class="property"><div class="emoji">🏡</div><div class="name">Homestay</div><div class="type">Any region</div></div>
+    <div class="property"><div class="emoji">🐆</div><div class="name">Snow Leopard Lodge</div><div class="type">Ladakh</div></div>
+    <div class="property"><div class="emoji">➕</div><div class="name">Your Property</div><div class="type">Any of 100+ RARE properties</div></div>
   </div>
 </section>
 
@@ -289,7 +259,7 @@ section{padding:80px 24px}
 <div class="footer">
   <div class="rare" style="margin-bottom:8px">R A R E</div>
   <div>Destinations & Experiences</div>
-  <div style="margin-top:12px;color:rgba(255,255,255,.3);font-size:.7rem">
+  <div style="margin-top:16px;color:rgba(255,255,255,.3);font-size:.72rem">
     Built with OpenClaw + Qwen 3.6 Plus + Google Workspace CLI<br>
     KarmYog Agentic OS &bull; April 2026
   </div>
@@ -297,141 +267,51 @@ section{padding:80px 24px}
 
 <script>
 const messages = [
-  {type:'chip', text:'Property Knowledge'},
-  {type:'user', text:'Hi, tell me about Sarai at Toria', time:'21:35'},
-  {type:'bot', text:'The Sarai at Toria is a place built around the rhythm of the forest. It sits on a beautiful stretch of open grassland right on the banks of the <strong>Ken River</strong>, just at the edge of the <strong>Panna Tiger Reserve</strong>.\n\nIt\'s the creation of Joanna Van Gruisen and Raghu Chundawat — both deeply committed conservationists. They built the Sarai as a gateway to Panna, which is one of India\'s most successful conservation stories.\n\n<strong>Here is what makes us truly special:</strong>\n\n• <strong>Intimate & Sustainable:</strong> Just eight cozy, earth-colored cottages\n• <strong>The Ken River:</strong> Boat safaris with Mugger crocodiles, gharials, and incredible birdlife\n• <strong>Wildlife & Heritage:</strong> Tiger safari in the morning, Khajuraho temples in the afternoon\n• <strong>Communal Dining:</strong> Everyone eats together — guests, naturalists, and sometimes Joanna and Raghu', time:'21:36'},
-
-  {type:'chip', text:'Agent Rate Lookup & Estimate'},
-  {type:'user', text:'Saurabh from Peirce & Leslie is asking for rates. 2 pax, Double AP, 3 nights Feb 6-9. Give me the full breakdown', time:'22:23'},
-  {type:'bot', text:'Hi Saurabh,\n\nHere is the full breakdown for <strong>Charles Denton x 2</strong> for <strong>3 nights (Feb 6–9)</strong> on a <strong>Double AP</strong> plan:\n\n<strong>Rate per night:</strong> ₹22,300 + 18% GST = ₹26,314\n<strong>Total for 3 nights:</strong> ₹78,942\n\n<strong>Included in the stay:</strong>\n• Accommodation in a Cottage (Twin/Double as preferred)\n• All meals (Breakfast, Lunch, and Dinner)\n• Complimentary jeep safari permits (subject to availability)\n• Boat safari on the Ken River\n\nI can generate the formal estimate PDF for you now. Would you like me to proceed?', time:'22:23'},
-
-  {type:'chip', text:'Outstanding Payments'},
-  {type:'user', text:'Show me all pending payments — who still owes us money?', time:'22:25'},
-  {type:'bot', text:'Here are the <strong>21 bookings</strong> with outstanding balances:\n\n<table><tr><th>Booking</th><th>Guest</th><th>Outstanding</th></tr><tr><td>SAT-9</td><td>MP Tours (Dec 2025)</td><td><strong>₹3,08,520</strong></td></tr><tr><td>SAT-181</td><td>Srinivas Mandavilli</td><td>₹78,942</td></tr><tr><td>SAT-75</td><td>Vijay Goyal</td><td>₹59,256</td></tr><tr><td>SAT-183</td><td>Joanna Massey</td><td>₹26,314</td></tr><tr><td>SAT-203</td><td>Kathryn Joy</td><td>₹26,314</td></tr><tr><td>SAT-129</td><td>Sameer Vashisht</td><td>₹24,960</td></tr><tr><td>SAT-131</td><td>Aarti & Divakar Goswami</td><td>₹7,850</td></tr><tr><td>SAT-81</td><td>Margaret Hayter</td><td>₹6,372</td></tr></table>\n\nThe largest outstanding is <strong>SAT-9 (MP Tours)</strong> at over ₹3 Lakhs. Shall I prepare a follow-up email?', time:'22:26'},
-
-  {type:'chip', text:'Booking Lookup'},
-  {type:'user', text:'Pull up booking SAT-130 — full details', time:'22:28'},
-  {type:'bot', text:'Here are the full details for <strong>Booking SAT-130</strong>:\n\n• <strong>Guest:</strong> Andrew Leslau\n• <strong>Agent:</strong> Peirce & Leslie\n• <strong>Dates:</strong> Feb 11–13, 2026 (2 Nights)\n• <strong>Rooms:</strong> 1 Cottage (Double/Twin)\n• <strong>Meal Plan:</strong> AP (All meals)\n• <strong>Total:</strong> ₹80,628\n• <strong>Received:</strong> ₹78,294\n• <strong>Balance:</strong> <strong>₹2,334.00</strong>\n\nWould you like me to generate the balance invoice for the remaining ₹2,334?', time:'22:29'},
-
-  {type:'chip', text:'Agent Reconciliation'},
-  {type:'user', text:'Has Bridging Journeys settled all their invoices this season?', time:'22:29'},
-  {type:'bot', text:'Yes, <strong>Bridging Journeys</strong> has settled all their invoices for this season.\n\nI checked their <strong>4 bookings</strong> in the payment ledger, and every single one has a <strong>₹0.00</strong> outstanding balance. They are fully paid up and in good standing.', time:'22:30'},
-
-  {type:'chip', text:'Season Summary & Analytics'},
-  {type:'user', text:'Give me a season summary — total revenue, top 10 agents, occupancy by month', time:'22:44'},
-  {type:'bot', text:'<strong>Season Summary (Oct 2025 – Mar 2026)</strong>\n\n💰 <strong>Financial Overview</strong>\n• Total Bookings: 195\n• Total Revenue: INR 2,54,06,005\n• Total Advance Received: INR 2,61,64,664\n\n🏆 <strong>Top 5 Agents by Revenue</strong>\n<table><tr><th>Agent</th><th>Revenue</th></tr><tr><td>Direct Guest</td><td>₹91,49,730</td></tr><tr><td>Artou Voyages</td><td>₹10,03,238</td></tr><tr><td>TCI [Sita]</td><td>₹9,94,841</td></tr><tr><td>Travel Inn</td><td>₹7,35,546</td></tr><tr><td>Vana Safaris</td><td>₹7,20,077</td></tr></table>\n\n📅 <strong>Peak Month:</strong> February (42.4% occupancy) — typical for Panna due to open forest and peak tiger sightings.', time:'22:46'},
-
-  {type:'chip', text:'Next Season Rate Lookup'},
-  {type:'user', text:'If we get an enquiry for October 2026, what are Peirce & Leslie\'s current contracted rates?', time:'22:51'},
-  {type:'bot', text:'🏷️ <strong>Peirce & Leslie Contracted Rates</strong> (Excl. GST)\n\n<table><tr><th>Room Type</th><th>AP (All Meals)</th><th>MAP (B+1)</th></tr><tr><td>Single</td><td>₹17,800</td><td>₹16,400</td></tr><tr><td>Double</td><td>₹22,300</td><td>₹19,600</td></tr><tr><td>Family</td><td>₹32,000</td><td>₹28,500</td></tr><tr><td>Extra Adult</td><td>₹6,500</td><td>₹6,500</td></tr><tr><td>Extra Child</td><td>₹6,500</td><td>₹6,500</td></tr></table>\n\n18% GST to be added. Would you like me to generate a sample estimate?', time:'22:54'},
-
-  {type:'chip', text:'Refund Analysis'},
-  {type:'user', text:'How many refunds did we process this season? List them all.', time:'23:40'},
-  {type:'bot', text:'We processed <strong>24 refunds</strong> this season:\n\n<table><tr><th>Booking</th><th>Guest</th><th>Amount</th></tr><tr><td>SAT-102</td><td>Ashan Malalasekera</td><td>-₹3,38,778</td></tr><tr><td>SAT-165</td><td>Ashan Malalasekera</td><td>-₹83,144</td></tr><tr><td>SAT-89</td><td>Amita Dev</td><td>-₹38,250</td></tr><tr><td>SAT-66D</td><td>Akshay Madhavan</td><td>-₹24,500</td></tr><tr><td>SAT-66C</td><td>Janmejai Bagrodia</td><td>-₹24,500</td></tr><tr><td>SAT-66A</td><td>Ashish Jatia</td><td>-₹24,500</td></tr><tr><td>SAT-66B</td><td>Rishabh Parekh</td><td>-₹24,500</td></tr></table>\n\nLargest: <strong>SAT-102 (Ashan Malalasekera)</strong> — ₹3,38,778 adjusted against booking SAT-165.', time:'23:44'},
+  {type:'chip',text:'Property Knowledge'},
+  {type:'user',text:'Hi, tell me about Sarai at Toria',time:'21:35'},
+  {type:'bot',text:'The Sarai at Toria is a place built around the rhythm of the forest. It sits on a beautiful stretch of open grassland right on the banks of the <strong>Ken River</strong>, just at the edge of the <strong>Panna Tiger Reserve</strong>.\n\nIt\'s the creation of Joanna Van Gruisen and Raghu Chundawat — both deeply committed conservationists.\n\n<strong>What makes us special:</strong>\n\n• <strong>8 cottages</strong> — intimate, earth-colored, connected pairs for families\n• <strong>Ken River</strong> boat safaris — gharials, crocodiles, otters\n• <strong>Wildlife + Heritage</strong> — tiger safari morning, Khajuraho temples afternoon\n• <strong>Communal dining</strong> — everyone eats together',time:'21:36'},
+  {type:'chip',text:'Agent Rate Lookup + GST Calculation'},
+  {type:'user',text:'Saurabh from Peirce & Leslie is asking for rates. 2 pax, Double AP, 3 nights Feb 6-9. Full breakdown.',time:'22:23'},
+  {type:'bot',text:'Hi Saurabh,\n\nBreakdown for <strong>Charles Denton x 2</strong>, <strong>3 nights (Feb 6–9)</strong>, <strong>Double AP</strong>:\n\n<strong>Rate per night:</strong> ₹22,300 + 18% GST = ₹26,314\n<strong>Total for 3 nights: ₹78,942</strong>\n\n<strong>Included:</strong>\n• Cottage accommodation\n• All meals (Breakfast, Lunch, Dinner)\n• Jeep safari permits\n• Ken River boat safari\n\nShall I generate the estimate PDF?',time:'22:23'},
+  {type:'chip',text:'Outstanding Payments — Live from Google Sheets'},
+  {type:'user',text:'Show me all pending payments — who still owes us money?',time:'22:25'},
+  {type:'bot',text:'<strong>21 bookings</strong> with outstanding balances:\n\n<table><tr><th>Booking</th><th>Guest</th><th>Outstanding</th></tr><tr><td>SAT-9</td><td>MP Tours</td><td><strong>₹3,08,520</strong></td></tr><tr><td>SAT-181</td><td>Srinivas Mandavilli</td><td>₹78,942</td></tr><tr><td>SAT-75</td><td>Vijay Goyal</td><td>₹59,256</td></tr><tr><td>SAT-183</td><td>Joanna Massey</td><td>₹26,314</td></tr><tr><td>SAT-203</td><td>Kathryn Joy</td><td>₹26,314</td></tr><tr><td>SAT-129</td><td>Sameer Vashisht</td><td>₹24,960</td></tr></table>\n\nLargest: <strong>SAT-9 (MP Tours)</strong> at ₹3+ Lakhs. Shall I draft a follow-up?',time:'22:26'},
+  {type:'chip',text:'73-Column Booking Lookup'},
+  {type:'user',text:'Pull up booking SAT-130 — full details',time:'22:28'},
+  {type:'bot',text:'<strong>Booking SAT-130:</strong>\n\n• <strong>Guest:</strong> Andrew Leslau\n• <strong>Agent:</strong> Peirce & Leslie\n• <strong>Dates:</strong> Feb 11–13, 2026 (2 nights)\n• <strong>Meal Plan:</strong> AP\n• <strong>Total:</strong> ₹80,628\n• <strong>Received:</strong> ₹78,294\n• <strong>Balance: ₹2,334</strong>\n\nGenerate the balance invoice?',time:'22:29'},
+  {type:'chip',text:'Agent Account Reconciliation'},
+  {type:'user',text:'Has Bridging Journeys settled all their invoices this season?',time:'22:29'},
+  {type:'bot',text:'Yes, <strong>Bridging Journeys</strong> has settled all invoices.\n\nChecked their <strong>4 bookings</strong> — every one has <strong>₹0.00</strong> outstanding. Fully paid, good standing.',time:'22:30'},
+  {type:'chip',text:'Full Season Analytics'},
+  {type:'user',text:'Season summary — revenue, top agents, occupancy by month',time:'22:44'},
+  {type:'bot',text:'<strong>Season 2025-26 Summary:</strong>\n\n💰 Revenue: <strong>₹2.54 Crore</strong> (195 bookings)\n\n🏆 Top 5:\n<table><tr><th>Agent</th><th>Revenue</th></tr><tr><td>Direct</td><td>₹91.5L</td></tr><tr><td>Artou Voyages</td><td>₹10.0L</td></tr><tr><td>TCI [Sita]</td><td>₹9.9L</td></tr><tr><td>Travel Inn</td><td>₹7.4L</td></tr><tr><td>Vana Safaris</td><td>₹7.2L</td></tr></table>\n\n📅 Peak: <strong>February</strong> (42.4% occupancy) — deciduous forest opens up, tiger sightings peak.',time:'22:46'},
+  {type:'chip',text:'Refund Analysis'},
+  {type:'user',text:'How many refunds this season? List them.',time:'23:40'},
+  {type:'bot',text:'<strong>24 refunds</strong> processed:\n\n<table><tr><th>Booking</th><th>Guest</th><th>Amount</th></tr><tr><td>SAT-102</td><td>Ashan Malalasekera</td><td>-₹3,38,778</td></tr><tr><td>SAT-165</td><td>Ashan Malalasekera</td><td>-₹83,144</td></tr><tr><td>SAT-89</td><td>Amita Dev</td><td>-₹38,250</td></tr><tr><td>SAT-66D</td><td>Akshay Madhavan</td><td>-₹24,500</td></tr><tr><td>SAT-66C</td><td>Janmejai Bagrodia</td><td>-₹24,500</td></tr></table>\n\nLargest: SAT-102 — ₹3.38L adjusted against subsequent booking.',time:'23:44'},
 ];
 
-const chatBody = document.getElementById('chatBody');
-const typingIndicator = document.getElementById('typingIndicator');
-const inputDisplay = document.getElementById('inputDisplay');
-const startBtn = document.getElementById('startBtn');
-let msgIndex = 0;
-let running = false;
-
-function showTyping() {
-  typingIndicator.classList.add('active');
-  chatBody.scrollTop = chatBody.scrollHeight;
+const chatBody=document.getElementById('chatBody'),typingIndicator=document.getElementById('typingIndicator'),inputDisplay=document.getElementById('inputDisplay'),startBtn=document.getElementById('startBtn');
+let msgIndex=0,running=false;
+function showTyping(){typingIndicator.classList.add('active');chatBody.scrollTop=chatBody.scrollHeight}
+function hideTyping(){typingIndicator.classList.remove('active')}
+function createMsgEl(m){
+  if(m.type==='chip'){const c=document.createElement('div');c.className='section-chip';c.textContent=m.text;return c}
+  const d=document.createElement('div');d.className='msg '+(m.type==='user'?'user':'bot');
+  let h='';if(m.type==='bot')h+='<div class="sender">Sarai Torai</div>';
+  h+='<div class="content">'+m.text.replace(/\n/g,'<br>')+'</div>';
+  h+='<div class="time">'+m.time;if(m.type==='user')h+=' <span class="ticks">✓✓</span>';h+='</div>';
+  d.innerHTML=h;return d;
 }
-function hideTyping() {
-  typingIndicator.classList.remove('active');
+function typeInInput(text,cb){inputDisplay.value='';let i=0;const iv=setInterval(()=>{inputDisplay.value=text.substring(0,++i);if(i>=text.length){clearInterval(iv);setTimeout(cb,400)}},38)}
+function showNextMessage(){
+  if(msgIndex>=messages.length){inputDisplay.value='';inputDisplay.placeholder='Demo complete — try @SaraiTorai_bot on Telegram';return}
+  const m=messages[msgIndex];msgIndex++;
+  if(m.type==='chip'){const el=createMsgEl(m);chatBody.insertBefore(el,typingIndicator);chatBody.scrollTop=chatBody.scrollHeight;setTimeout(showNextMessage,600);return}
+  if(m.type==='user'){typeInInput(m.text,()=>{inputDisplay.value='';const el=createMsgEl(m);chatBody.insertBefore(el,typingIndicator);requestAnimationFrame(()=>{el.classList.add('show')});chatBody.scrollTop=chatBody.scrollHeight;setTimeout(showNextMessage,900)});return}
+  if(m.type==='bot'){showTyping();const delay=2200+Math.min(m.text.length*3,3500);setTimeout(()=>{hideTyping();const el=createMsgEl(m);chatBody.insertBefore(el,typingIndicator);requestAnimationFrame(()=>{el.classList.add('show')});chatBody.scrollTop=chatBody.scrollHeight;setTimeout(showNextMessage,3000)},delay);return}
 }
-
-function createMsgEl(m) {
-  if (m.type === 'chip') {
-    const chip = document.createElement('div');
-    chip.className = 'section-chip';
-    chip.textContent = m.text;
-    return chip;
-  }
-  const div = document.createElement('div');
-  div.className = 'msg ' + (m.type === 'user' ? 'user' : 'bot');
-
-  let html = '';
-  if (m.type === 'bot') html += '<div class="sender">Sarai Torai</div>';
-  html += '<div class="content">' + m.text.replace(/\n/g, '<br>') + '</div>';
-  html += '<div class="time">' + m.time;
-  if (m.type === 'user') html += ' <span class="ticks">✓✓</span>';
-  html += '</div>';
-  div.innerHTML = html;
-  return div;
-}
-
-function typeInInput(text, cb) {
-  inputDisplay.value = '';
-  let i = 0;
-  const iv = setInterval(() => {
-    inputDisplay.value = text.substring(0, ++i);
-    if (i >= text.length) { clearInterval(iv); setTimeout(cb, 300); }
-  }, 38);
-}
-
-function showNextMessage() {
-  if (msgIndex >= messages.length) {
-    inputDisplay.value = '';
-    inputDisplay.placeholder = 'Demo complete — try @SaraiTorai_bot on Telegram';
-    return;
-  }
-
-  const m = messages[msgIndex];
-  msgIndex++;
-
-  if (m.type === 'chip') {
-    const el = createMsgEl(m);
-    chatBody.insertBefore(el, typingIndicator);
-    chatBody.scrollTop = chatBody.scrollHeight;
-    setTimeout(showNextMessage, 600);
-    return;
-  }
-
-  if (m.type === 'user') {
-    // Type the question in the input bar, then show as bubble
-    typeInInput(m.text, () => {
-      inputDisplay.value = '';
-      const el = createMsgEl(m);
-      chatBody.insertBefore(el, typingIndicator);
-      requestAnimationFrame(() => { el.classList.add('show'); });
-      chatBody.scrollTop = chatBody.scrollHeight;
-      setTimeout(showNextMessage, 900);
-    });
-    return;
-  }
-
-  if (m.type === 'bot') {
-    // Show typing indicator, then reveal response
-    showTyping();
-    const delay = 2200 + Math.min(m.text.length * 3, 3500);
-    setTimeout(() => {
-      hideTyping();
-      const el = createMsgEl(m);
-      chatBody.insertBefore(el, typingIndicator);
-      requestAnimationFrame(() => { el.classList.add('show'); });
-      chatBody.scrollTop = chatBody.scrollHeight;
-      setTimeout(showNextMessage, 3000);
-    }, delay);
-    return;
-  }
-}
-
-function startDemo() {
-  if (running) return;
-  running = true;
-  startBtn.style.display = 'none';
-  showNextMessage();
-}
-
-// Auto-start when scrolled into view
-const observer = new IntersectionObserver((entries) => {
-  if (entries[0].isIntersecting && !running) startDemo();
-}, { threshold: 0.5 });
+function startDemo(){if(running)return;running=true;startBtn.style.display='none';showNextMessage()}
+const observer=new IntersectionObserver((entries)=>{if(entries[0].isIntersecting&&!running)startDemo()},{threshold:0.3});
 observer.observe(document.getElementById('chatBody'));
 </script>
 </body>
